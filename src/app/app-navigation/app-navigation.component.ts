@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { LoaderService } from '../modules/shared/loader.service';
+import { LayoutService } from '../modules/shared/layout.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,12 +9,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class AppNavigationComponent {
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.HandsetPortrait)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    public layoutService: LayoutService,
+    public loaderService: LoaderService) {}
 
 }

@@ -1,4 +1,8 @@
-<div class="app-container" [class.is-handset]="(isHandset$ | async)" >
+<div class="app-container" [class.is-handset]="(layoutService.isHandset | async)" >
+  <div class="loader-status" *ngIf="loaderService.isLoading | async">
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+  </div>
+  
   <mat-toolbar color="primary">
     <button
       type="button"
@@ -10,14 +14,13 @@
     <span class="app-name">Marvel's Catalog App</span>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container"
-  [style.marginTop.px]="(isHandset$ | async) ? 56 : 0">
+  <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" 
-        [fixedInViewport]="(isHandset$ | async)" 
+        [fixedInViewport]="(layoutService.isHandset | async)" 
         fixedTopGap="56"
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false">
+        [attr.role]="(layoutService.isHandset | async) ? 'dialog' : 'navigation'"
+        [mode]="(layoutService.isHandset | async) ? 'over' : 'side'"
+        [opened]="(layoutService.isHandset | async) === false">
       <mat-toolbar>
         Menu
       </mat-toolbar>
