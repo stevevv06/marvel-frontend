@@ -1,1 +1,37 @@
-<p>story works!</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxFill>
+    
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
+      <mat-paginator fxFlex="none"
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="paginate($event)">
+      </mat-paginator>
+
+      <cdk-virtual-scroll-viewport itemSize="200" minBufferPx ="300" maxBufferPx ="400" fxFlex>
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="25px" >
+          <div fxFlex class="composed-card-small" *cdkVirtualFor="let item of data">
+          <mat-card>
+              <mat-card-header>
+                  <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                  <p>
+                      {{item.description}}
+                  </p>
+              </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-raised-button>
+                        Characters <span class="mat-small">&#183; {{item.characters.available}}</span>
+                    </button>
+                    <button mat-raised-button>
+                        Comics <span class="mat-small">&#183; {{item.comics.available}}</span>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>

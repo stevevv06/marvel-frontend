@@ -4,20 +4,31 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .composed-card {
-    max-width: 400px;
+    width: 600px;
     min-width: 100px;
-    // height: 400px;
+    // min-height: 400px;
     // min-height: 400px;
     // max-height: 400px;
     // margin: auto;
-    // margin-top: 1em;
-    // margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.is-handset.composed-card {
+    width: 350px !important;
+}
+
+.composed-card-small {
+    width: 600px;
+    min-width: 100px;
+    // height: 200px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
   
 .composed-card img {
     padding: 1em;
     width: 100%;
-    height: 250px;
+    max-height: 250px;
     object-fit: cover;
     object-position: center center;
 }

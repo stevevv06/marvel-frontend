@@ -3,9 +3,8 @@ import { CharacterService } from '../character.service';
 import { FormControl } from '@angular/forms';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable } from 'rxjs';
-import { startWith, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { ComicService } from '../../comic/comic.service';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { StoryService } from '../../story/story.service';
 import { PageEvent } from '@angular/material/paginator';
 import { LayoutService } from '../../shared/layout.service';
@@ -17,7 +16,7 @@ import { LayoutService } from '../../shared/layout.service';
 })
 export class CharacterComponent implements OnInit {
 
-  charactersData: any[];
+  data: any[];
   nameFilter: string = '';
   comicsFilter: Map<string, string> = new Map();
   storiesFilter: Map<string, string> = new Map();
@@ -57,7 +56,7 @@ export class CharacterComponent implements OnInit {
     this.characterService.getAll(this.buildCriteria()).subscribe(
       (res: any) => {
         this.totalItems = res.data.total;
-        this.charactersData = res.data.results
+        this.data = res.data.results
       });
   }
 
@@ -95,7 +94,7 @@ export class CharacterComponent implements OnInit {
       {
         titleStartsWith: filter,
         noVariants: true
-      });
+      }).pipe(map((data: any) => data.data.results));
   }
 
   comicSelected(event: MatAutocompleteSelectedEvent): void {
@@ -109,7 +108,9 @@ export class CharacterComponent implements OnInit {
   }
 
   getStories(filter: string) {
-    this.storiesOptions = this.storyService.getAll({titleStartsWith: filter});
+    this.storiesOptions = this.storyService.getAll(
+      {titleStartsWith: filter
+      }).pipe(map((data: any) => data.data.results));
   }
 
   storySelected(event: MatAutocompleteSelectedEvent): void {

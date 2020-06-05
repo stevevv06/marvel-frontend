@@ -16,8 +16,6 @@ export class CharacterService {
 
   public getAll(params? : any): Observable<any[]> {
     let authParams = RequestUtils.createAuthParamsAndAdd(params);
-
-    console.log(authParams);
     return this.http.get<any>(this.resourceUrl, 
       {params: authParams, observe: 'response'})
       .pipe(map((data: any) => data.body));

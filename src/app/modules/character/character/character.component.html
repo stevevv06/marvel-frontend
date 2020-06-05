@@ -1,9 +1,8 @@
-
 <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxFill>
     <div fxFlex="25" fxFlex.xs="none">
       <mat-expansion-panel class="filter-expansion-panel" fxFlex
-        [expanded]="!(layoutService.isHandset | async)">
-        <mat-expansion-panel-header *ngIf="(layoutService.isHandset | async)">
+        [expanded]="!(layoutService.isHandsetPortrait | async)">
+        <mat-expansion-panel-header *ngIf="(layoutService.isHandsetPortrait | async)">
           <mat-panel-title>
               Filter and Sort parameters
           </mat-panel-title>
@@ -93,27 +92,29 @@
         (page)="paginate($event)">
       </mat-paginator>
 
-      <cdk-virtual-scroll-viewport itemSize="400" fxFlex>
+      <cdk-virtual-scroll-viewport itemSize="500" minBufferPx ="600" maxBufferPx ="800" fxFlex>
         <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="25px" >
-          <div fxFlex class="composed-card" *cdkVirtualFor="let character of charactersData">
-          <mat-card 
-              >
+          <div fxFlex class="composed-card" *cdkVirtualFor="let item of data">
+          <mat-card >
               <mat-card-header>
-                  <mat-card-title>{{character.name}}</mat-card-title>
+                  <mat-card-title>{{item.name}}</mat-card-title>
               </mat-card-header>
-              <img mat-card-image [alt]="character.name"
-                src="{{character.thumbnail.path}}/landscape_incredible.{{character.thumbnail.extension}}">
-              <mat-card-content>
-                  
+              <img mat-card-image [alt]="item.name"
+                src="{{item.thumbnail.path}}/landscape_incredible.{{item.thumbnail.extension}}">
+              <mat-card-content>  
                   <p>
-                      {{character.description}}
+                      {{item.description}}
                   </p>
               </mat-card-content>
 
               <mat-card-actions>
-                  <button mat-button>Details</button>
-                  <button mat-button>Comics</button>
-                  <button mat-button>Stories</button>
+                  <button mat-raised-button>Details</button>
+                  <button mat-raised-button>
+                    Comics <span class="mat-small">&#183; {{item.comics.available}}</span>
+                  </button>
+                  <button mat-raised-button>
+                    Stories <span class="mat-small">&#183; {{item.stories.available}}</span>
+                  </button>
                 </mat-card-actions>
             </mat-card>
           </div>

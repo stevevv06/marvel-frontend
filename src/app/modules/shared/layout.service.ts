@@ -6,7 +6,15 @@ import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable()
 export class LayoutService {
-    isHandset: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.HandsetPortrait)
+    isHandsetPortrait: Observable<boolean> = this.breakpointObserver.observe(
+      Breakpoints.HandsetPortrait)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+    isHandset: Observable<boolean> = this.breakpointObserver.observe(
+      [Breakpoints.Handset, Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait, Breakpoints.HandsetLandscape])
     .pipe(
       map(result => result.matches),
       shareReplay()

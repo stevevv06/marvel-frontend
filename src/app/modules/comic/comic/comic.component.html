@@ -1,1 +1,104 @@
-<p>comic works!</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxFill>
+    <div fxFlex="25" fxFlex.xs="none">
+      <mat-expansion-panel class="filter-expansion-panel" fxFlex
+        [expanded]="!(layoutService.isHandsetPortrait | async)">
+        <mat-expansion-panel-header *ngIf="(layoutService.isHandsetPortrait | async)">
+          <mat-panel-title>
+              Filter and Sort parameters
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="filter-container"
+          fxLayout="column" fxLayoutAlign="space-evenly" fxLayoutGap="0.5em">
+            <mat-form-field fxFlex>
+                <mat-label>Title Filter</mat-label>
+                <input matInput type="text" [(ngModel)]="titleFilter" autocomplete="off">
+                <button mat-button *ngIf="titleFilter" matSuffix mat-icon-button aria-label="Clear" 
+                    (click)="titleFilter=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Format Filter</mat-label>
+                <mat-select [(ngModel)]="formatFilter">
+                    <mat-option selected="" value=""></mat-option>
+                    <mat-option value="comic">Comic</mat-option>
+                    <mat-option value="magazine">Magazine</mat-option>
+                    <mat-option value="trade paperback">Trade Paperback</mat-option>
+                    <mat-option value="hardcover">Hardcover</mat-option>
+                    <mat-option value="digest">Digest</mat-option>
+                    <mat-option value="graphic novel">Graphic Novel</mat-option>
+                    <mat-option value="digital comic">Digital Comic</mat-option>
+                    <mat-option value="infinite comic">Infinite Comic</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Issue Number Filter</mat-label>
+                <input matInput type="text" [(ngModel)]="issueNumberFilter" autocomplete="off">
+                <button mat-button *ngIf="issueNumberFilter" matSuffix mat-icon-button aria-label="Clear" 
+                    (click)="issueNumberFilter=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div fxFlex fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0.5em">
+              <button mat-mini-fab color="primary" 
+                matTooltip="Apply Filter" aria-label="Filter" 
+                  (click)="getAll()">
+                  <mat-icon>filter_alt</mat-icon>
+              </button>
+
+              <button mat-mini-fab color="primary" 
+                [matTooltip]="orderByAsc ? 'Sort Descending' : 'Sort Ascending'" aria-label="Sort" 
+                  (click)="toggleOrder()">
+                  <mat-icon>{{orderByAsc ? 'arrow_drop_down' : 'arrow_drop_up'}}</mat-icon>
+              </button>
+            </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+    
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
+      <mat-paginator fxFlex="none"
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="paginate($event)">
+      </mat-paginator>
+
+      <cdk-virtual-scroll-viewport itemSize="500" minBufferPx ="600" maxBufferPx ="800" fxFlex>
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="25px" fxFlexFill="true" >
+          <div fxFlex class="composed-card" [class.is-handset]="(layoutService.isHandsetPortrait | async)"
+          *cdkVirtualFor="let item of data">
+          <mat-card >
+              <mat-card-header>
+                  <mat-card-title>{{item.title}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image [alt]="item.title"
+                src="{{item.thumbnail.path}}/landscape_incredible.{{item.thumbnail.extension}}">
+              <mat-card-content>
+                  <p>
+                      {{item.description}}
+                  </p>
+                  <span class="mat-small">
+                      Issue Number: {{item.issueNumber}} &#183; Format: {{item.format}} &#183; Page Count: {{item.pageCount}}
+                  </span>
+              </mat-card-content>
+
+              <mat-card-actions>
+                  <button mat-raised-button>Details</button>
+                  <button mat-raised-button>
+                    Characters <span class="mat-small">&#183; {{item.characters.available}}</span>
+                  </button>
+                  <button mat-raised-button>
+                    Stories <span class="mat-small">&#183; {{item.stories.available}}</span>
+                  </button>
+                </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
