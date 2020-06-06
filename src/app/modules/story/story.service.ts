@@ -21,6 +21,13 @@ export class StoryService {
       .pipe(map((data: any) => data.body));
   }
 
+  public get(id : number): Observable<any> {
+    let authParams = RequestUtils.createAuthParams();
+    return this.http.get<any>(`${this.resourceUrl}/${id}`, 
+      {params: authParams, observe: 'response'})
+      .pipe(map((data: any) => data.body));
+  }
+
   public getComics(id : number, params? : any): Observable<any> {
     let authParams = RequestUtils.createAuthParamsAndAdd(params);
     return this.http.get<any>(`${this.resourceUrl}/${id}/${AppConstants.COMICS_ENDPOINT}`, 

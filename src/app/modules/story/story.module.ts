@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [StoryComponent, StoryDetailComponent, StoryCharacterComponent, StoryComicComponent],
@@ -44,7 +45,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatPaginatorModule,
     MatExpansionModule,
     MatSelectModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatListModule
   ],
   providers: [
     StoryService

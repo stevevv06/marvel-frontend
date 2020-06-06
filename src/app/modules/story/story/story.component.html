@@ -23,6 +23,10 @@
 
                 <mat-card-actions>
                     <button mat-raised-button
+                      routerLink="/story-detail/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                      Details
+                    </button>
+                    <button mat-raised-button
                       routerLink="/story-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                       Characters <span class="mat-small">&#183; {{item.characters.available}}</span>
                     </button>
