@@ -1,1 +1,60 @@
-<p>comic-character works!</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxFill
+    class="detail-child-panel">
+
+    <div fxFlex="25" fxFlex.xs="none">
+        <mat-card class="detail-panel" fxFlex>
+            <div fxLayout="row wrap" fxLayout.xs="row" fxLayoutAlign="start start" fxFill>
+                <div fxFlex="100" fxFlex.xs="25">
+                    <img [alt]="item.name"
+                        src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
+                </div>
+                <div fxFlex="100">
+                    <p class="mat-headline">Comic: {{item.title}}</p>
+                    <p class="mat-body"><strong>Description:</strong> {{item.description}}</p>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
+        <mat-paginator fxFlex="none"
+            [length]="totalItems"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="paginate($event)">
+        </mat-paginator>
+
+        <cdk-virtual-scroll-viewport itemSize="500" minBufferPx ="600" maxBufferPx ="800" fxFlex>
+            <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="25px" >
+              <div fxFlex class="composed-card" *cdkVirtualFor="let item of data">
+              <mat-card >
+                  <mat-card-header>
+                      <mat-card-title>{{item.name}}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image [alt]="item.name"
+                    src="{{item.thumbnail.path}}/landscape_incredible.{{item.thumbnail.extension}}">
+                  <mat-card-content>  
+                      <p>
+                          {{item.description}}
+                      </p>
+                  </mat-card-content>
+    
+                  <mat-card-actions>
+                      <button mat-raised-button 
+                        routerLink="/character-detail/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        Details</button>
+                      <button mat-raised-button
+                      routerLink="/character-comic/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        Comics <span class="mat-small">&#183; {{item.comics.available}}</span>
+                      </button>
+                      <button mat-raised-button
+                      routerLink="/character-story/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        Stories <span class="mat-small">&#183; {{item.stories.available}}</span>
+                      </button>
+                    </mat-card-actions>
+                </mat-card>
+              </div>
+            </div>
+        </cdk-virtual-scroll-viewport>
+    </div>
+</div>
