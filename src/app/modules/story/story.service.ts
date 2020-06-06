@@ -10,13 +10,27 @@ import { map } from 'rxjs/operators';
 })
 export class StoryService {
 
-  private resourceUrl =  AppConstants.SERVER_API_URL + 'stories';
+  private resourceUrl =  AppConstants.SERVER_API_URL + AppConstants.STORIES_ENDPOINT;
 
   constructor(private http: HttpClient) { }
 
   public getAll(params? : any): Observable<any[]> {
     let authParams = RequestUtils.createAuthParamsAndAdd(params);
     return this.http.get<any>(this.resourceUrl, 
+      {params: authParams, observe: 'response'})
+      .pipe(map((data: any) => data.body));
+  }
+
+  public getComics(id : number, params? : any): Observable<any> {
+    let authParams = RequestUtils.createAuthParamsAndAdd(params);
+    return this.http.get<any>(`${this.resourceUrl}/${id}/${AppConstants.COMICS_ENDPOINT}`, 
+      {params: authParams, observe: 'response'})
+      .pipe(map((data: any) => data.body));
+  }
+
+  public getCharacters(id : number, params? : any): Observable<any> {
+    let authParams = RequestUtils.createAuthParamsAndAdd(params);
+    return this.http.get<any>(`${this.resourceUrl}/${id}/${AppConstants.CHARACTERS_ENDPOINT}`, 
       {params: authParams, observe: 'response'})
       .pipe(map((data: any) => data.body));
   }

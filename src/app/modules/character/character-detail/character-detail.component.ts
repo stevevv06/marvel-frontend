@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class CharacterDetailComponent implements OnInit, OnDestroy {
 
   id: number;
-  item: any;
+  item: any = {};
   private subscription: Subscription;
 
   constructor(
@@ -35,7 +35,6 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
     this.characterService.get(this.id).subscribe(
       (res: any) => {
         this.item = res.data.results[0];
-        console.log(this.item);
       });
   }
 }

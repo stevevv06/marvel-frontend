@@ -2,8 +2,8 @@
     <mat-card class="group-panel">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="25px">
             <div fxFlex="35" fxFlex.gt-md="25" fxFlexOrder="1" fxFlexOrder.xs="2">
-                <img [alt]="item.name"
-                    src="{{item.thumbnail.path}}/detail.{{item.thumbnail.extension}}">
+                <img [alt]="item.name" *ngIf="item"
+                    src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
             </div>
             <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
                 <p class="mat-headline">Comic: {{item.title}}</p>
@@ -16,21 +16,14 @@
     </mat-card>
 
     <mat-card class="group-panel horizontal-images">
-        <p class="mat-title">Comic's Images ({{item.images.length}})</p>
+        <p class="mat-title">Comic's Images ({{item.images?.length}})</p>
         <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="350" minBufferPx ="350"  maxBufferPx ="700"
-            *ngIf="item.images.length>0">
+            *ngIf="item.images?.length>0">
             <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px" fxFlexFill="true">
                 <img fxFlex="auto" [alt]="item.name" *cdkVirtualFor="let image of item.images"
                         src="{{image.path}}/detail.{{image.extension}}">
             </div>
         </cdk-virtual-scroll-viewport>
-
-        <!--div fxLayout="row wrap" fxLayoutAlign="space-between start" fxFill="true" *ngIf="item.images.length>0">
-            <div fxFlex.gt-md="12" fxFlex.md="15" fxFlex.sm="20" fxFlex.xs="25" *ngFor="let image of item.images">
-                <img [alt]="item.name" 
-                        src="{{image.path}}/detail.{{image.extension}}">
-            </div>
-        </div-->
     </mat-card>
     
     <mat-card class="group-panel">
@@ -38,11 +31,11 @@
             <span fxFlex="auto" class="mat-title">Comic's Characters</span>
             <button fxFlex="initial" mat-stroked-button
                 routerLink="/comic-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                View detailed Characters list <span class="mat-small">&#183; {{item.characters.available}}</span>
+                View detailed Characters list <span class="mat-small">&#183; {{item.characters?.available}}</span>
             </button>
         </div>
         <mat-list>
-            <mat-list-item *ngFor="let character of item.characters.items">
+            <mat-list-item *ngFor="let character of item.characters?.items">
                 {{character.name}}
             </mat-list-item>
         </mat-list>
@@ -53,11 +46,11 @@
             <span fxFlex="auto" class="mat-title">Comic's Stories</span>
             <button fxFlex="initial" mat-stroked-button
                 routerLink="/comic-story/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                View detailed Stories list <span class="mat-small">&#183; {{item.stories.available}}</span>
+                View detailed Stories list <span class="mat-small">&#183; {{item.stories?.available}}</span>
             </button>
         </div>
         <mat-list>
-            <mat-list-item *ngFor="let story of item.stories.items">
+            <mat-list-item *ngFor="let story of item.stories?.items">
                 {{story.name}}
             </mat-list-item>
         </mat-list>

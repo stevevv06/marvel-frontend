@@ -20,7 +20,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .composed-card-small {
     width: 600px;
     min-width: 100px;
-    // height: 200px;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -61,12 +60,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 350px;
     width: 100%;
 }
-/*
-.detail-root-panel .group-panel.horizontal-images .cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {
-    display: flex;
-    flex-direction: row;
-}
-*/
+
 .detail-root-panel .group-panel.horizontal-images img {
     //display: flex;
     width: auto;
@@ -76,4 +70,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .detail-root-panel img {
     width: 100%;
+}
+
+.detail-child-panel .detail-panel img{
+    width: 100%;
+    height: auto;
 }

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ComicDetailComponent implements OnInit {
   id: number;
-  item: any;
+  item: any = {};
   private subscription: Subscription;
 
   constructor(

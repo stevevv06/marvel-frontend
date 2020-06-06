@@ -3,7 +3,7 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="25px">
             <div fxFlex="35" fxFlex.gt-md="25" fxFlexOrder="1" fxFlexOrder.xs="2">
                 <img [alt]="item.name"
-                    src="{{item.thumbnail.path}}/detail.{{item.thumbnail.extension}}">
+                    src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
             </div>
             <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
                 <p class="mat-headline">Character: {{item.name}}</p>
@@ -17,11 +17,11 @@
             <span fxFlex="auto" class="mat-title">Character's Comics</span>
             <button fxFlex="initial" mat-stroked-button
                 routerLink="/character-comic/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                View detailed comics list <span class="mat-small">&#183; {{item.comics.available}}</span>
+                View detailed comics list <span class="mat-small">&#183; {{item.comics?.available}}</span>
             </button>
         </div>
         <mat-list>
-            <mat-list-item *ngFor="let comic of item.comics.items">
+            <mat-list-item *ngFor="let comic of item.comics?.items">
                 {{comic.name}}
             </mat-list-item>
         </mat-list>
@@ -32,11 +32,11 @@
             <span fxFlex="auto" class="mat-title">Character's Stories</span>
             <button fxFlex="initial" mat-stroked-button
                 routerLink="/character-story/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                View detailed Stories list <span class="mat-small">&#183; {{item.stories.available}}</span>
+                View detailed Stories list <span class="mat-small">&#183; {{item.stories?.available}}</span>
             </button>
         </div>
         <mat-list>
-            <mat-list-item *ngFor="let story of item.stories.items">
+            <mat-list-item *ngFor="let story of item.stories?.items">
                 {{story.name}}
             </mat-list-item>
         </mat-list>
