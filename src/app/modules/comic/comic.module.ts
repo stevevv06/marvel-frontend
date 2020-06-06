@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [ComicComponent, ComicDetailComponent, ComicCharacterComponent, ComicStoryComponent],
@@ -42,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [
     ComicService

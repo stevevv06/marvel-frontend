@@ -48,3 +48,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .filter-container {
     padding: 0.5em;
 }
+
+.detail-root-panel {
+    padding: 2em;
+}
+
+.detail-root-panel .group-panel {
+    margin-bottom: 2em;
+}
+
+.detail-root-panel .group-panel.horizontal-images .cdk-virtual-scroll-viewport {
+    height: 350px;
+    width: 100%;
+}
+/*
+.detail-root-panel .group-panel.horizontal-images .cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+*/
+.detail-root-panel .group-panel.horizontal-images img {
+    //display: flex;
+    width: auto;
+    height: 325px;
+    //padding: 0.5em;
+}
+
+.detail-root-panel img {
+    width: 100%;
+}

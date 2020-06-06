@@ -21,6 +21,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [CharacterComponent, CharacterDetailComponent, CharacterComicComponent, CharacterStoryComponent],
@@ -40,7 +41,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatAutocompleteModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [
     CharacterService

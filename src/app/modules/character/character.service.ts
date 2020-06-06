@@ -20,4 +20,11 @@ export class CharacterService {
       {params: authParams, observe: 'response'})
       .pipe(map((data: any) => data.body));
   }
+
+  public get(id : number): Observable<any> {
+    let authParams = RequestUtils.createAuthParams();
+    return this.http.get<any>(`${this.resourceUrl}/${id}`, 
+      {params: authParams, observe: 'response'})
+      .pipe(map((data: any) => data.body));
+  }
 }
