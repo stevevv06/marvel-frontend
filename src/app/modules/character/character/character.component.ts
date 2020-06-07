@@ -111,7 +111,7 @@ export class CharacterComponent implements OnInit, OnDestroy {
   }
 
   transition() {
-    this.router.navigate(['/character'], {
+    this.router.navigate(['/characters'], {
       queryParams: {
             page: this.page,
             pageSize: this.pageSize,

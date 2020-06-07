@@ -20,11 +20,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderService } from './modules/shared/loader.service';
 import { LoaderInterceptor } from './modules/shared/loader.interceptor';
 import { LayoutService } from './modules/shared/layout.service';
+import { AppHomeComponent } from './app-home/app-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavigationComponent
+    AppNavigationComponent,
+    AppHomeComponent
   ],
   imports: [
     BrowserModule,

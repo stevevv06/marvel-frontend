@@ -66,7 +66,7 @@ export class ComicCharacterComponent implements OnInit, OnDestroy {
   }
 
   transition() {
-    this.router.navigate(['/comic-character',this.id], {
+    this.router.navigate(['/comics',this.id,'characters'], {
       queryParams: {
             page: this.page,
             pageSize: this.pageSize

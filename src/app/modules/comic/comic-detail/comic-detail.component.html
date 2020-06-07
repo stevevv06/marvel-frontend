@@ -30,7 +30,7 @@
         <div fxLayout="row">
             <span fxFlex="auto" class="mat-title">Comic's Characters</span>
             <button fxFlex="initial" mat-stroked-button
-                routerLink="/comic-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                routerLink="/comics/{{item.id}}/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 View detailed Characters list <span class="mat-small">&#183; {{item.characters?.available}}</span>
             </button>
         </div>
@@ -45,7 +45,7 @@
         <div fxLayout="row">
             <span fxFlex="auto" class="mat-title">Comic's Stories</span>
             <button fxFlex="initial" mat-stroked-button
-                routerLink="/comic-story/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                routerLink="/comics/{{item.id}}/stories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 View detailed Stories list <span class="mat-small">&#183; {{item.stories?.available}}</span>
             </button>
         </div>

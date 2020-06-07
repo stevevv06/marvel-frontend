@@ -12,7 +12,7 @@
         <div fxLayout="row">
             <span fxFlex="auto" class="mat-title">Story's Characters</span>
             <button fxFlex="initial" mat-stroked-button
-                routerLink="/story-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                routerLink="/stories/{{item.id}}/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 View detailed Characters list <span class="mat-small">&#183; {{item.characters?.available}}</span>
             </button>
         </div>
@@ -27,7 +27,7 @@
         <div fxLayout="row">
             <span fxFlex="auto" class="mat-title">Story's Comics</span>
             <button fxFlex="initial" mat-stroked-button
-                routerLink="/story-comic/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                routerLink="/stories/{{item.id}}/comics" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 View detailed comics list <span class="mat-small">&#183; {{item.comics?.available}}</span>
             </button>
         </div>

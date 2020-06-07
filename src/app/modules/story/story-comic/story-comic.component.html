@@ -42,14 +42,14 @@
 
                 <mat-card-actions>
                     <button mat-raised-button
-                        routerLink="/comic-detail/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        routerLink="/comics/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         Details</button>
                     <button mat-raised-button
-                        routerLink="/comic-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        routerLink="/comics/{{item.id}}/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         Characters <span class="mat-small">&#183; {{item.characters?.available}}</span>
                     </button>
                     <button mat-raised-button
-                        routerLink="/comic-story/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        routerLink="/comics/{{item.id}}/stories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         Stories <span class="mat-small">&#183; {{item.stories?.available}}</span>
                     </button>
                     </mat-card-actions>

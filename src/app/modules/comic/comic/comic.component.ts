@@ -90,7 +90,7 @@ export class ComicComponent implements OnInit, OnDestroy {
   }
 
   transition() {
-    this.router.navigate(['/comic'], {
+    this.router.navigate(['/comics'], {
       queryParams: {
             page: this.page,
             pageSize: this.pageSize,

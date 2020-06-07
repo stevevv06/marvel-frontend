@@ -11,7 +11,9 @@
       (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <span class="app-name">Marvel's Catalog App</span>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="app-title">
+      <span class="app-name">Marvel's Catalog App</span>
+    </a>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container"
@@ -26,9 +28,14 @@
         Menu
       </mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item routerLink="character" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Characters</a>
-        <a mat-list-item routerLink="comic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Comics</a>
-        <a mat-list-item routerLink="story" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Stories</a>
+        <a mat-list-item routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon matListIcon>home</mat-icon>Home</a>
+        <a mat-list-item routerLink="/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon matListIcon>account_circle</mat-icon>Characters</a>
+        <a mat-list-item routerLink="/comics" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon matListIcon>import_contacts</mat-icon>Comics</a>
+        <a mat-list-item routerLink="/stories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon matListIcon>speaker_notes</mat-icon>Stories</a>
       </mat-nav-list>
     </mat-sidenav>
 

@@ -40,11 +40,11 @@
     
                     <mat-card-actions>
                         <button mat-raised-button
-                          routerLink="/story-character/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                          routerLink="/stories/{{item.id}}/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                           Characters <span class="mat-small">&#183; {{item.characters.available}}</span>
                         </button>
                         <button mat-raised-button
-                          routerLink="/story-comic/{{item.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                          routerLink="/stories/{{item.id}}/comics" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                           Comics <span class="mat-small">&#183; {{item.comics.available}}</span>
                         </button>
                     </mat-card-actions>

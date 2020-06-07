@@ -1,0 +1,18 @@
+<div class="home-panel">
+    <mat-nav-list>
+        <mat-list-item routerLink="/characters" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListIcon>account_circle</mat-icon>
+            <h3 matLine>Characters</h3>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/comics" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListIcon>import_contacts</mat-icon>
+            <h3 matLine>Comics</h3>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/stories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListIcon>speaker_notes</mat-icon>
+            <h3 matLine>Stories</h3>
+        </mat-list-item>
+    </mat-nav-list>
+</div>

@@ -75,7 +75,7 @@ export class StoryComponent implements OnInit, OnDestroy {
   }
 
   transition() {
-    this.router.navigate(['/story'], {
+    this.router.navigate(['/stories'], {
       queryParams: {
             page: this.page,
             pageSize: this.pageSize,

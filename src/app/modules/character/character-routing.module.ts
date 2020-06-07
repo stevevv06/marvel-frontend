@@ -8,19 +8,19 @@ import { CharacterStoryComponent } from './character-story/character-story.compo
 
 const routes: Routes = [
   {
-    path: 'character',
+    path: '',
     component: CharacterComponent
   },
   {
-    path: 'character-detail/:id',
+    path: 'characters/:id',
     component: CharacterDetailComponent
   },
   {
-    path: 'character-comic/:id',
+    path: 'characters/:id/comics',
     component: CharacterComicComponent
   },
   {
-    path: 'character-story/:id',
+    path: 'characters/:id/stories',
     component: CharacterStoryComponent
   }
 ];
