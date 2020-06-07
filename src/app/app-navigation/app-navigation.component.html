@@ -14,7 +14,8 @@
     <span class="app-name">Marvel's Catalog App</span>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-container class="sidenav-container"
+  [style.marginTop.px]="(layoutService.isHandset | async) ? 56 : 0">
     <mat-sidenav #drawer class="sidenav" 
         [fixedInViewport]="(layoutService.isHandset | async)" 
         fixedTopGap="56"
