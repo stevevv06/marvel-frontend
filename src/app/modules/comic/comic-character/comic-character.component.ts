@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin, combineLatest } from 'rxjs';
 import { ComicService } from '../comic.service';
 import { LayoutService } from '../../shared/layout.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comic-character',
   templateUrl: './comic-character.component.html',
   styleUrls: ['./comic-character.component.scss']
 })
-export class ComicCharacterComponent implements OnInit {
+export class ComicCharacterComponent implements OnInit, OnDestroy {
 
   id: number;
   item: any = {};
   data: any[];
-  private subscription: Subscription;
+  private routeParamsSub: Subscription;
 
   totalItems: number; 
   pageSize: number = 20;
@@ -25,19 +25,23 @@ export class ComicCharacterComponent implements OnInit {
   constructor(
     private comicService: ComicService,
     public layoutService: LayoutService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.route.params
+    this.routeParamsSub = combineLatest(this.route.params, this.route.queryParams, 
+      (p, qp) => ({ p, qp }))
       .subscribe((params) => {
-        this.id = params['id'];
+        this.id = params.p['id'];
+        this.page = params.qp['page'] ? params.qp['page'] : 0;
+        this.pageSize = params.qp['pageSize'] ? params.qp['pageSize'] : 20;
         this.get();
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeParamsSub.unsubscribe();
 }
 
   get() {
@@ -58,6 +62,16 @@ export class ComicCharacterComponent implements OnInit {
   paginate(event: PageEvent) {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
+    this.transition();
+  }
+
+  transition() {
+    this.router.navigate(['/comic-character',this.id], {
+      queryParams: {
+            page: this.page,
+            pageSize: this.pageSize
+        }
+    });
     this.get();
   }
 }

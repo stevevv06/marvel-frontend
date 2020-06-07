@@ -3,6 +3,7 @@
     <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
       <mat-paginator fxFlex="none"
         [length]="totalItems"
+        [pageIndex]="page"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)="paginate($event)">

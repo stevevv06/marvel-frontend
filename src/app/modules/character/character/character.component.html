@@ -70,7 +70,7 @@
             <div fxFlex fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0.5em">
               <button mat-mini-fab color="primary" 
                 matTooltip="Apply Filter" aria-label="Filter" 
-                  (click)="getAll()">
+                  (click)="transition()">
                   <mat-icon>filter_alt</mat-icon>
               </button>
 
@@ -87,6 +87,7 @@
     <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
       <mat-paginator fxFlex="none"
         [length]="totalItems"
+        [pageIndex]="page"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
         (page)="paginate($event)">

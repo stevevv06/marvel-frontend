@@ -2,7 +2,7 @@
     <mat-card class="group-panel">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="25px">
             <div fxFlex="35" fxFlex.gt-md="25" fxFlexOrder="1" fxFlexOrder.xs="2">
-                <img [alt]="item.name" *ngIf="item"
+                <img [alt]="item.name" *ngIf="item.thumbnail"
                     src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
             </div>
             <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">

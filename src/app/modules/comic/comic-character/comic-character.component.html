@@ -5,7 +5,7 @@
         <mat-card class="detail-panel" fxFlex>
             <div fxLayout="row wrap" fxLayout.xs="row" fxLayoutAlign="start start" fxFill>
                 <div fxFlex="100" fxFlex.xs="25">
-                    <img [alt]="item.name"
+                    <img [alt]="item.name" *ngIf="item.thumbnail"
                         src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
                 </div>
                 <div fxFlex="100">
@@ -19,6 +19,7 @@
     <div fxLayout="column" fxLayoutAlign="start" fxFlex="auto">
         <mat-paginator fxFlex="none"
             [length]="totalItems"
+            [pageIndex]="page"
             [pageSize]="pageSize"
             [pageSizeOptions]="pageSizeOptions"
             (page)="paginate($event)">

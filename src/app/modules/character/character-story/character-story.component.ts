@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription, forkJoin, combineLatest } from 'rxjs';
 import { CharacterService } from '../character.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { LayoutService } from '../../shared/layout.service';
 
@@ -10,12 +10,12 @@ import { LayoutService } from '../../shared/layout.service';
   templateUrl: './character-story.component.html',
   styleUrls: ['./character-story.component.scss']
 })
-export class CharacterStoryComponent implements OnInit {
+export class CharacterStoryComponent implements OnInit, OnDestroy {
 
   id: number;
   item: any = {};
   data: any[];
-  private subscription: Subscription;
+  private routeParamsSub: Subscription;
 
   totalItems: number; 
   pageSize: number = 20;
@@ -25,19 +25,23 @@ export class CharacterStoryComponent implements OnInit {
   constructor(
     private characterService: CharacterService,
     public layoutService: LayoutService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.route.params
+    this.routeParamsSub = combineLatest(this.route.params, this.route.queryParams, 
+      (p, qp) => ({ p, qp }))
       .subscribe((params) => {
-        this.id = params['id'];
+        this.id = params.p['id'];
+        this.page = params.qp['page'] ? params.qp['page'] : 0;
+        this.pageSize = params.qp['pageSize'] ? params.qp['pageSize'] : 20;
         this.get();
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeParamsSub.unsubscribe();
 }
 
   get() {
@@ -58,6 +62,16 @@ export class CharacterStoryComponent implements OnInit {
   paginate(event: PageEvent) {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
+    this.transition();
+  }
+
+  transition() {
+    this.router.navigate(['/character-story',this.id], {
+      queryParams: {
+            page: this.page,
+            pageSize: this.pageSize
+        }
+    });
     this.get();
   }
 }

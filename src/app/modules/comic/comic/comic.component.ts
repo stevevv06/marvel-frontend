@@ -1,34 +1,55 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ComicService } from '../../comic/comic.service';
 import { PageEvent } from '@angular/material/paginator';
 import { LayoutService } from '../../shared/layout.service';
+import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comic',
   templateUrl: './comic.component.html',
   styleUrls: ['./comic.component.scss']
 })
-export class ComicComponent implements OnInit {
+export class ComicComponent implements OnInit, OnDestroy {
 
   data: any[];
-  titleFilter: string = '';
-  formatFilter: string = '';
-  issueNumberFilter: string = '';
+  titleFilter: string;
+  formatFilter: string;
+  issueNumberFilter: string;
   orderBy: string = 'issueNumber';
-  orderByAsc: boolean = true;
+  orderByAsc: boolean;
   
   totalItems: number; 
-  pageSize: number = 20;
+  pageSize: number;
   pageSizeOptions: number[] = [20, 50, 100];
   page: number;
 
+  private routeParamsSub: Subscription;
+
   constructor(
       private comicService: ComicService,
-      public layoutService: LayoutService) {
+      public layoutService: LayoutService,
+      private route: ActivatedRoute,
+      private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.routeParamsSub = this.route.queryParams
+        .subscribe((params) => {
+          if(params) {
+            this.page = params['page'] ? params['page'] : 0;
+            this.pageSize = params['pageSize'] ? params['pageSize'] : 20;
+            this.orderByAsc = params['orderByAsc'] ? JSON.parse(params['orderByAsc']) : true;
+            this.titleFilter = params['titleFilter'] ? params['titleFilter'] : '';
+            this.formatFilter = params['formatFilter'] ? params['formatFilter'] : '';
+            this.issueNumberFilter = params['issueNumberFilter'] ? params['issueNumberFilter'] : '';
+          }
+          this.getAll();
+    });
+  }
+
+  ngOnDestroy() {
+    this.routeParamsSub.unsubscribe();
   }
 
   getAll() {
@@ -37,12 +58,6 @@ export class ComicComponent implements OnInit {
         this.totalItems = res.data.total;
         this.data = res.data.results
       });
-  }
-
-  paginate(event: PageEvent) {
-    this.page = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.getAll();
   }
 
   private buildCriteria(): any {
@@ -63,8 +78,28 @@ export class ComicComponent implements OnInit {
     return criteria;
   }
 
+  paginate(event: PageEvent) {
+    this.page = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.transition();
+  }
+
   toggleOrder() {
     this.orderByAsc = !this.orderByAsc;
+    this.transition();
+  }
+
+  transition() {
+    this.router.navigate(['/comic'], {
+      queryParams: {
+            page: this.page,
+            pageSize: this.pageSize,
+            orderByAsc: this.orderByAsc,
+            titleFilter: this.titleFilter,
+            formatFilter: this.formatFilter,
+            issueNumberFilter: this.issueNumberFilter
+        }
+    });
     this.getAll();
   }
 }
