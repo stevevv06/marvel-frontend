@@ -1,0 +1,9 @@
+version: '3'
+services:
+  marvel-frontend-app:
+    build:
+      context: .
+      args:
+        env: prod
+    ports:
+      - "8088:80"
