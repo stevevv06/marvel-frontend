@@ -99,6 +99,7 @@
           <mat-card >
               <mat-card-header>
                   <mat-card-title>{{item.name}}</mat-card-title>
+                  <app-bookmark-button [id]="item.id" type="character" [value]="item.name"></app-bookmark-button>
               </mat-card-header>
               <img mat-card-image [alt]="item.name"
                 src="{{item.thumbnail.path}}/landscape_incredible.{{item.thumbnail.extension}}">

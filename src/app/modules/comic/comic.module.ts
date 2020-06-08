@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { BookmarkModule } from '../bookmark/bookmark.module';
 
 @NgModule({
   declarations: [ComicComponent, ComicDetailComponent, ComicCharacterComponent, ComicStoryComponent],
@@ -44,7 +45,8 @@ import { MatListModule } from '@angular/material/list';
     MatPaginatorModule,
     MatExpansionModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    BookmarkModule
   ],
   providers: [
     ComicService

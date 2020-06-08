@@ -3,6 +3,7 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="25px">
             <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
                 <p class="mat-headline">Story: {{item.title}}</p>
+                <app-bookmark-button id="{{item.id}}" type="story" value="{{item.title}}"></app-bookmark-button>
                 <p class="mat-body"><strong>Description:</strong> {{item.description}}</p>
             </div>
         </div>

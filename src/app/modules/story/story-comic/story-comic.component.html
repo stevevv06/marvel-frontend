@@ -28,6 +28,7 @@
             <mat-card >
                 <mat-card-header>
                     <mat-card-title>{{item.title}}</mat-card-title>
+                    <app-bookmark-button [id]="item.id" type="comic" [value]="item.title"></app-bookmark-button>
                 </mat-card-header>
                 <img mat-card-image [alt]="item.title"
                     src="{{item.thumbnail.path}}/landscape_incredible.{{item.thumbnail.extension}}">

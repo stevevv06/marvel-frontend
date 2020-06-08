@@ -31,6 +31,7 @@
               <mat-card>
                   <mat-card-header>
                       <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
+                      <app-bookmark-button [id]="item.id" type="story" [value]="item.title"></app-bookmark-button>
                   </mat-card-header>
                   <mat-card-content>
                       <p>

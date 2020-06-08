@@ -24,6 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatListModule } from '@angular/material/list';
+import { BookmarkModule } from '../bookmark/bookmark.module';
 
 @NgModule({
   declarations: [StoryComponent, StoryDetailComponent, StoryCharacterComponent, StoryComicComponent],
@@ -46,7 +47,8 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatSelectModule,
     MatBadgeModule,
-    MatListModule
+    MatListModule,
+    BookmarkModule
   ],
   providers: [
     StoryService

@@ -7,6 +7,7 @@
             </div>
             <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
                 <p class="mat-headline">Character: {{item.name}}</p>
+                <app-bookmark-button id="{{item.id}}" type="character" value="{{item.name}}"></app-bookmark-button>
                 <p class="mat-body"><strong>Description:</strong> {{item.description}}</p>
             </div>
         </div>

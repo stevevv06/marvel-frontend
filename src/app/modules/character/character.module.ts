@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { BookmarkModule } from '../bookmark/bookmark.module';
 
 @NgModule({
   declarations: [CharacterComponent, CharacterDetailComponent, CharacterComicComponent, CharacterStoryComponent],
@@ -42,7 +43,8 @@ import { MatListModule } from '@angular/material/list';
     MatTooltipModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    BookmarkModule
   ],
   providers: [
     CharacterService
