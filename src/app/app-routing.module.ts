@@ -1,5 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules, NoPreloading } from '@angular/router';
 import { AppHomeComponent } from './app-home/app-home.component';
 
 
@@ -15,8 +15,7 @@ const routes: Routes = [
   {
     path: 'stories',
     loadChildren: () => import('./modules/story/story.module').then(m => m.StoryModule)
-  },
-    
+  },  
   {
     path: '',
     redirectTo: '',

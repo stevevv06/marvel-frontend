@@ -12,15 +12,15 @@ const routes: Routes = [
     component: StoryComponent
   },
   {
-    path: 'stories/:id',
+    path: ':id',
     component: StoryDetailComponent
   },
   {
-    path: 'stories/:id/characters',
+    path: ':id/characters',
     component: StoryCharacterComponent
   },
   {
-    path: 'stories/:id/comics',
+    path: ':id/comics',
     component: StoryComicComponent
   }
 ];

@@ -12,15 +12,15 @@ const routes: Routes = [
     component: ComicComponent
   },
   {
-    path: 'comics/:id',
+    path: ':id',
     component: ComicDetailComponent
   },
   {
-    path: 'comics/:id/characters',
+    path: ':id/characters',
     component: ComicCharacterComponent
   },
   {
-    path: 'comics/:id/stories',
+    path: ':id/stories',
     component: ComicStoryComponent
   }
 ];
