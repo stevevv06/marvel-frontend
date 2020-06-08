@@ -34,7 +34,6 @@ export class ComicDetailComponent implements OnInit {
     this.comicService.get(this.id).subscribe(
       (res: any) => {
         this.item = res.data.results[0];
-        console.log(this.item);
       });
   }
 

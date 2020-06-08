@@ -1,9 +1,9 @@
 <div class="detail-root-panel">
     <mat-card class="group-panel">
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start start" fxLayoutGap="25px">
-            <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
+            <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1" *ngIf="item.id">
                 <p class="mat-headline">Story: {{item.title}}</p>
-                <app-bookmark-button id="{{item.id}}" type="story" value="{{item.title}}"></app-bookmark-button>
+                <app-bookmark-button [id]="item.id" type="story" [value]="item.title"></app-bookmark-button>
                 <p class="mat-body"><strong>Description:</strong> {{item.description}}</p>
             </div>
         </div>

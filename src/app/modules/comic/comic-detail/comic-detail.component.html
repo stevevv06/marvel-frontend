@@ -5,9 +5,9 @@
                 <img [alt]="item.name" *ngIf="item.thumbnail"
                     src="{{item.thumbnail?.path}}/detail.{{item.thumbnail?.extension}}">
             </div>
-            <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1">
+            <div fxFlex fxFlexOrder="2" fxFlexOrder.xs="1" *ngIf="item.id">
                 <p class="mat-headline">Comic: {{item.title}}</p>
-                <app-bookmark-button id="{{item.id}}" type="comic" value="{{item.title}}"></app-bookmark-button>
+                <app-bookmark-button [id]="item.id" type="comic" [value]="item.title"></app-bookmark-button>
                 <p class="mat-body"><strong>Description:</strong> {{item.description}}</p>
                 <p class="mat-caption"><strong>Issue Number:</strong> {{item.issueNumber}}</p>
                 <p class="mat-caption"><strong>Format:</strong> {{item.format}}</p>

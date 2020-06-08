@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'stories',
     loadChildren: () => import('./modules/story/story.module').then(m => m.StoryModule)
-  },  
+  },
+  {
+    path: 'bookmarks',
+    loadChildren: () => import('./modules/bookmark/bookmark.module').then(m => m.BookmarkModule)
+  },
   {
     path: '',
     redirectTo: '',

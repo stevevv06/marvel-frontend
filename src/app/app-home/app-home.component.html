@@ -14,5 +14,10 @@
             <mat-icon matListIcon>speaker_notes</mat-icon>
             <h3 matLine>Stories</h3>
         </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/bookmarks" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListIcon>bookmark</mat-icon>
+            <h3 matLine>Bookmarks</h3>
+        </mat-list-item>
     </mat-nav-list>
 </div>
