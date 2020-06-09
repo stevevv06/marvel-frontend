@@ -7,3 +7,4 @@ services:
         env: prod
     ports:
       - "8088:80"
+      - "8089:443"

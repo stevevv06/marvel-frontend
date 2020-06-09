@@ -1,27 +1,39 @@
-# MarvelFrontend
+# MARVEL FRONTEND ANGULAR APP TECHNICAL CHALLENGE APPLICATION
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+This application consumes Marvel's public Rest Api [Marvel API](https://developer.marvel.com/documentation/getting_started)
+Implemented with Angular 9 and Material Angular 9 with WPA capabilities.
+A docker confiuration it's provided for production environment with nginx and https configuration
 
-## Development server
 
+
+## Running with docker
+
+
+### Prerequisites
+1.Install docker and docker compose
+
+[Docker Engine](https://docs.docker.com/engine/install/)
+
+[Docker Compose](https://docs.docker.com/compose/install/)
+
+
+### Running the application
+In order to run the application execute the command:
+
+    docker-compose up -d
+
+Once container is up Navigate to `https://localhost:8089/`. Certificate it's self signed so you may need to add it to trusted in browser
+    
+
+## Running  from sources
+
+### Prerequsites
+Before running the application, you must install
+1. NodeJs: install node js (lts 12.18.0) https://nodejs.org/en/download/
+
+2. Angular CLI: run the command
+    npm install -g @angular/cli
+
+
+### Run application
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
